@@ -1,2 +1,2 @@
-# varqa-android
-varqa android app
+#Varqa-android
+Varqa android app
