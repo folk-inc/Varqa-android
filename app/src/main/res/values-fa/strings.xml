@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">وارکا</string>
-    <string name="slide_1_title">Hello Food!</string>
-    <string name="slide_1_desc">The easiest way to order food from yout favourite restraount!</string>
+    <string name="slide_1_title">سریع</string>
+    <string name="slide_1_desc">سریع تر از همه</string>
 
-    <string name="slide_2_title">Movie Tickets</string>
-    <string name="slide_2_desc">Book movie tickets for your family and friends</string>
+    <string name="slide_2_title">امنیت</string>
+    <string name="slide_2_desc">حفظ حریم خصوصی در پیام ها و رابطه ها</string>
 
-    <string name="slide_3_title">Great Discounts</string>
-    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+    <string name="slide_3_title">منبع باز</string>
+    <string name="slide_3_desc">رایگان و تغییر پذیر</string>
 
-    <string name="slide_4_title">World Travel</string>
-    <string name="slide_4_desc">Book tickets for any transportation and travel the world</string>
+    <string name="slide_4_title">رابط برنامه نویسی</string>
+    <string name="slide_4_desc">خلق شده با رابط برنامه نویسی</string>
 
     <string name="skip">رد کردن</string>
     <string name="next">بعدی</string>
