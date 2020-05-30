@@ -10,11 +10,11 @@
         android:layout_width="350dp"
         android:layout_height="350dp"
         app:lottie_autoPlay="true"
-        android:alpha="0.5"
+        android:alpha="0.3"
         app:lottie_loop="true"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        app:lottie_fileName="launch2.json" />
+        app:lottie_fileName="launch.json" />
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
