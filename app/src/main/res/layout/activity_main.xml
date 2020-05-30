@@ -4,9 +4,16 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.folk.varqa.MainActivity">
+    tools:context="com.folk.varqa.MainActivity"
+    android:orientation="horizontal">
     <WebView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/webview"/>
+<!--    <ProgressBar-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_centerInParent="true"-->
+
+<!--        android:id="@+id/pg"/>-->
 </RelativeLayout>

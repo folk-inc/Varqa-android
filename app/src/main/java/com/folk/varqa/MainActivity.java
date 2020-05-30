@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 WebView webView;
 String url = "https://web.varqa.ir/";
+//ProgressBar pg;
 boolean doubleBackToExitPressedOnce = false;
     @SuppressLint({"JavascriptInterface", "SetJavaScriptEnabled"})
     @Override
@@ -23,6 +26,7 @@ boolean doubleBackToExitPressedOnce = false;
         webView.setWebViewClient(new WebViewClient());
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+//        pg = findViewById(R.id.pg);
         webView.setScrollbarFadingEnabled(false);
         webView.setHorizontalScrollBarEnabled(false);
         webView.setVerticalScrollBarEnabled(false);
@@ -39,10 +43,31 @@ boolean doubleBackToExitPressedOnce = false;
         webView.addJavascriptInterface(this, "jsinterface");
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
         webView.loadUrl(url);
+//        webView.setWebChromeClient( new MyWebChromeClient());
+//        webView.setWebViewClient( new webClient());
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
+//    public class MyWebChromeClient extends WebChromeClient {
+//        public void onProgressChanged(WebView view, int newProgress) {
+//            pg.setVisibility(View.VISIBLE);
+//            pg.setProgress(newProgress);
+//        }
+//    }
+//
+//    public class webClient extends WebViewClient {
+//        public boolean  shouldOverrideUrlLoading(WebView webView, String url) {
+//            webView.loadUrl(url);
+//            return true;
+//        }
+//
+//        @Override
+//        public void onPageFinished(WebView view, String url) {
+//            super.onPageFinished(view, url);
+//            pg.setVisibility(View.GONE);
+//        }
+//    }
     @Override
     public void onBackPressed() {
         if (webView.canGoBack()) {
