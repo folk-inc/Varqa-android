@@ -121,8 +121,8 @@ public class IntroSliderActivity extends AppCompatActivity {
         String [] slideDescriptions;
         int [] bgColorIds = {R.color.slide_1_bg_color, R.color.slide_2_bg_color,
                 R.color.slide_3_bg_color, R.color.slide_4_bg_color};
-        int [] slideImageIds = {R.drawable.ic_launcher_background, R.drawable.ic_launcher_background,
-                R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
+        int [] slideImageIds = {R.drawable.fast, R.drawable.sec,
+                R.drawable.git, R.drawable.api};
 
         public SliderPagerAdapter(){
             this.context = context;
