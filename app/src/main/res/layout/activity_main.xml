@@ -10,10 +10,15 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/webview"/>
-<!--    <ProgressBar-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_centerInParent="true"-->
-
-<!--        android:id="@+id/pg"/>-->
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/pg"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="please wait..."
+        android:labelFor="@+id/pg"
+        android:id="@+id/tv"/>
 </RelativeLayout>

@@ -10,12 +10,14 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 WebView webView;
 String url = "https://web.varqa.ir/";
-//ProgressBar pg;
+ProgressBar progressBar;
+TextView textView;
 boolean doubleBackToExitPressedOnce = false;
     @SuppressLint({"JavascriptInterface", "SetJavaScriptEnabled"})
     @Override
@@ -23,36 +25,49 @@ boolean doubleBackToExitPressedOnce = false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         webView = findViewById(R.id.webview);
+        progressBar = findViewById(R.id.pg);
+        textView = findViewById(R.id.tv);
+        websetting();
+        webView.loadUrl(url);
+        webView.setWebChromeClient( new MyWebChromeClient());
         webView.setWebViewClient(new WebViewClient());
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-//        pg = findViewById(R.id.pg);
-        webView.setScrollbarFadingEnabled(false);
-        webView.setHorizontalScrollBarEnabled(false);
-        webView.setVerticalScrollBarEnabled(false);
-        webView.setScrollContainer(false);
-        webView.getSettings().setDomStorageEnabled(true);
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    public void websetting(){
+        WebSettings webSetting = webView.getSettings();
+        webSetting.setJavaScriptEnabled(true);
+        webSetting.setDomStorageEnabled(true);
         webView.getSettings().setPluginState(WebSettings.PluginState.ON);
         webView.getSettings().setLoadsImagesAutomatically(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
         webView.getSettings().setSupportZoom(false);
         webView.getSettings().setSavePassword(false);
         webView.getSettings().setBlockNetworkImage(false);
         webView.getSettings().setSupportMultipleWindows(false);
         webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setSupportZoom(false);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAllowContentAccess(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setPluginState(WebSettings.PluginState.ON);
+        webView.setScrollbarFadingEnabled(false);
+        webView.setHorizontalScrollBarEnabled(false);
+        webView.setVerticalScrollBarEnabled(false);
+        webView.setScrollContainer(false);
         webView.addJavascriptInterface(this, "jsinterface");
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        webView.loadUrl(url);
-//        webView.setWebChromeClient( new MyWebChromeClient());
-//        webView.setWebViewClient( new webClient());
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webView.setScrollbarFadingEnabled(false);
     }
+
 //    public class MyWebChromeClient extends WebChromeClient {
 //        public void onProgressChanged(WebView view, int newProgress) {
-//            pg.setVisibility(View.VISIBLE);
-//            pg.setProgress(newProgress);
+//            progressBar.setVisibility(View.VISIBLE);
+//            progressBar.setProgress(newProgress);
 //        }
 //    }
 //
@@ -65,9 +80,37 @@ boolean doubleBackToExitPressedOnce = false;
 //        @Override
 //        public void onPageFinished(WebView view, String url) {
 //            super.onPageFinished(view, url);
-//            pg.setVisibility(View.GONE);
+//            progressBar.setVisibility(View.GONE);
 //        }
 //    }
+
+    public void onLoadResource (WebView view, String url) {
+
+        // if url contains string androidexample
+        // Then show progress  Dialog
+        if (progressDialog == null && url.contains("androidexample")
+        ) {
+
+            // in standard case YourActivity.this
+            progressDialog = new ProgressDialog(ShowWebView.this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.show();
+        }
+    }
+
+    // Called when all page resources loaded
+    public void onPageFinished(WebView view, String url) {
+
+        try{
+            // Close progressDialog
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+        }catch(Exception exception){
+            exception.printStackTrace();
+        }
+    }
     @Override
     public void onBackPressed() {
         if (webView.canGoBack()) {
