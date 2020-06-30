@@ -29,31 +29,31 @@ boolean doubleBackToExitPressedOnce = false;
         textView = findViewById(R.id.tv);
         websetting();
         webView.loadUrl(url);
-        webView.setWebChromeClient( new MyWebChromeClient());
         webView.setWebViewClient(new WebViewClient());
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
+    @SuppressLint("JavascriptInterface")
     public void websetting(){
         WebSettings webSetting = webView.getSettings();
         webSetting.setJavaScriptEnabled(true);
         webSetting.setDomStorageEnabled(true);
-        webView.getSettings().setPluginState(WebSettings.PluginState.ON);
-        webView.getSettings().setLoadsImagesAutomatically(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webView.getSettings().setSupportZoom(false);
-        webView.getSettings().setSavePassword(false);
-        webView.getSettings().setBlockNetworkImage(false);
-        webView.getSettings().setSupportMultipleWindows(false);
-        webView.getSettings().setAppCacheEnabled(true);
-        webView.getSettings().setSupportZoom(false);
-        webView.getSettings().setAllowFileAccess(true);
-        webView.getSettings().setAllowContentAccess(true);
-        webView.getSettings().setBuiltInZoomControls(true);
-        webView.getSettings().setPluginState(WebSettings.PluginState.ON);
+        webSetting.setPluginState(WebSettings.PluginState.ON);
+        webSetting.setLoadsImagesAutomatically(true);
+        webSetting.setLoadWithOverviewMode(true);
+        webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webSetting.setSupportZoom(false);
+        webSetting.setSavePassword(false);
+        webSetting.setBlockNetworkImage(false);
+        webSetting.setSupportMultipleWindows(false);
+        webSetting.setAppCacheEnabled(true);
+        webSetting.setSupportZoom(false);
+        webSetting.setAllowFileAccess(true);
+        webSetting.setAllowContentAccess(true);
+        webSetting.setBuiltInZoomControls(true);
+        webSetting.setPluginState(WebSettings.PluginState.ON);
         webView.setScrollbarFadingEnabled(false);
         webView.setHorizontalScrollBarEnabled(false);
         webView.setVerticalScrollBarEnabled(false);
@@ -64,53 +64,6 @@ boolean doubleBackToExitPressedOnce = false;
         webView.setScrollbarFadingEnabled(false);
     }
 
-//    public class MyWebChromeClient extends WebChromeClient {
-//        public void onProgressChanged(WebView view, int newProgress) {
-//            progressBar.setVisibility(View.VISIBLE);
-//            progressBar.setProgress(newProgress);
-//        }
-//    }
-//
-//    public class webClient extends WebViewClient {
-//        public boolean  shouldOverrideUrlLoading(WebView webView, String url) {
-//            webView.loadUrl(url);
-//            return true;
-//        }
-//
-//        @Override
-//        public void onPageFinished(WebView view, String url) {
-//            super.onPageFinished(view, url);
-//            progressBar.setVisibility(View.GONE);
-//        }
-//    }
-
-    public void onLoadResource (WebView view, String url) {
-
-        // if url contains string androidexample
-        // Then show progress  Dialog
-        if (progressDialog == null && url.contains("androidexample")
-        ) {
-
-            // in standard case YourActivity.this
-            progressDialog = new ProgressDialog(ShowWebView.this);
-            progressDialog.setMessage("Loading...");
-            progressDialog.show();
-        }
-    }
-
-    // Called when all page resources loaded
-    public void onPageFinished(WebView view, String url) {
-
-        try{
-            // Close progressDialog
-            if (progressDialog.isShowing()) {
-                progressDialog.dismiss();
-                progressDialog = null;
-            }
-        }catch(Exception exception){
-            exception.printStackTrace();
-        }
-    }
     @Override
     public void onBackPressed() {
         if (webView.canGoBack()) {
